@@ -20,7 +20,7 @@ driver.get("https://randomwordgenerator.com/")
 print(driver.title)
 
 def Search_words():
-    dict = {}
+    dict = []
 
     for i in range(2):
 
@@ -46,12 +46,12 @@ def Search_words():
             "words": String_word
         }
         
-        dict.update(dict1)
+        dict.append(dict1)
         # print(dict)
         # print(String_word)
 
-        with open("test1.json","a") as testFile:
-            json.dump(dict,testFile)
+    with open("test1.json","w") as testFile:
+        json.dump(dict,testFile)
 
 Search_words()
 # Search_words()
