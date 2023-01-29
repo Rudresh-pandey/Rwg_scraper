@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import json
 
 # options = Options()
 options = webdriver.ChromeOptions()
@@ -21,7 +22,7 @@ print(driver.title)
 def Search_words():
     dict = {}
 
-    for i in range(5):
+    for i in range(2):
 
         Id_intializer = i+1
 
@@ -39,11 +40,18 @@ def Search_words():
             String_word+=result.text
             String_word+='_'
 
-        print('................')
-        dict.update({Id_intializer:String_word})
+        print(f'#{i+1}...............')
+        dict1 = {
+            "id": Id_intializer,
+            "words": String_word
+        }
         
+        dict.update(dict1)
+        # print(dict)
         # print(String_word)
-    print(dict)
+
+        with open("test1.json","a") as testFile:
+            json.dump(dict,testFile)
 
 Search_words()
 # Search_words()
